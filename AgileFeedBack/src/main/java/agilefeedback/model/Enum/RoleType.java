@@ -2,5 +2,9 @@ package agilefeedback.model.Enum;
 
 
 public enum RoleType {
-    CLIENT, PO, DEV, SM
+    ADMIN,
+    CLIENT,
+    PO,
+    DEV,
+    SM
 }
