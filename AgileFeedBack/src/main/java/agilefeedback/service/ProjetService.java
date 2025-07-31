@@ -1,4 +1,11 @@
 package agilefeedback.service;
 
-public class ProjetService {
+import agilefeedback.Dto.ProjetDto;
+
+import java.util.List;
+
+public interface ProjetService {
+    ProjetDto createProjet(ProjetDto projetDto);
+    void deleteProjet(Long id);
+    List<ProjetDto> getAllProjets();
 }

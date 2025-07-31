@@ -19,9 +19,10 @@ public class AuthServiceImpl implements AuthService {
         User user = userRepository.findByEmail(request.getEmail()).orElse(null);
 
         if (user == null || !user.getPassword().equals(request.getPassword())) {
-            return new AuthResponseDto("Login failed");
+            return new AuthResponseDto("Login failed", null);
         }
 
-        return new AuthResponseDto("Login success");
+        return new AuthResponseDto("Login success", user.getRole().name());
     }
+
 }
