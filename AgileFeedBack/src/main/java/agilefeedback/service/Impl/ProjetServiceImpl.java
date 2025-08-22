@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,5 +36,10 @@ public class ProjetServiceImpl implements ProjetService {
                 .stream()
                 .map(projetMapper::toDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<ProjetDto> getProjetById(Long id) {
+        return projetRepository.findById(id).map(projetMapper::toDto);
     }
 }

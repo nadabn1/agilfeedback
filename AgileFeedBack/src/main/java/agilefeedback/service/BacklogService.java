@@ -1,4 +1,9 @@
 package agilefeedback.service;
 
-public class BacklogService {
+
+import agilefeedback.Dto.BacklogDto;
+
+public interface BacklogService {
+    BacklogDto createBacklogForProjet(Long projetId);
+    BacklogDto getBacklogByProjet(Long projetId);
 }

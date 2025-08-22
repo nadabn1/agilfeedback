@@ -3,6 +3,7 @@ package agilefeedback.controller;
 import agilefeedback.Dto.ProjetDto;
 import agilefeedback.service.ProjetService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,12 +21,20 @@ public class ProjetController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteProjet(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteProjet(@PathVariable Long id) {
         projetService.deleteProjet(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping
     public List<ProjetDto> getAllProjets() {
         return projetService.getAllProjets();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProjetDto> getProjetById(@PathVariable Long id) {
+        return projetService.getProjetById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build()); // <-- 404 si absent
     }
 }
