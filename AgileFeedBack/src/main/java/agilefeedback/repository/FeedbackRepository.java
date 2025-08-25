@@ -1,4 +1,10 @@
 package agilefeedback.repository;
 
-public class FeedbackRepository {
+import agilefeedback.model.Feedback;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface FeedbackRepository extends JpaRepository<Feedback, Long> {
+    List<Feedback> findByClientId(Long clientId);
 }

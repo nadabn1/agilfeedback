@@ -1,6 +1,5 @@
 package agilefeedback.controller;
 
-
 import agilefeedback.Dto.BacklogDto;
 import agilefeedback.service.BacklogService;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admin/backlogs")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 @RequiredArgsConstructor
 public class BacklogController {
 

@@ -1,9 +1,11 @@
+// agilefeedback/service/Impl/SprintServiceImpl.java
 package agilefeedback.service.Impl;
 
 import agilefeedback.Dto.SprintDto;
 import agilefeedback.mapper.SprintMapper;
 import agilefeedback.model.Backlog;
 import agilefeedback.model.Sprint;
+import agilefeedback.model.Enum.StatutSprint;
 import agilefeedback.repository.BacklogRepository;
 import agilefeedback.repository.SprintRepository;
 import agilefeedback.service.SprintService;
@@ -32,5 +34,17 @@ public class SprintServiceImpl implements SprintService {
     @Override
     public void deleteSprint(Long sprintId) {
         sprintRepository.deleteById(sprintId);
+    }
+
+    @Override
+    public SprintDto updateStatus(Long sprintId, StatutSprint statut) {
+        Sprint s = sprintRepository.findById(sprintId)
+                .orElseThrow(() -> new RuntimeException("Sprint introuvable"));
+        s.setStatut(statut);
+        Sprint saved = sprintRepository.save(s);
+        SprintDto dto = sprintMapper.toDto(saved);
+
+
+        return dto;
     }
 }

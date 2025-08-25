@@ -2,10 +2,8 @@ package agilefeedback.Dto;
 import lombok.Data;
 
 @Data
-public class FeedbackDto {
-    private Long id;
+public class FeedbackSubmitDto {
+    private String token;
     private String type;
     private String commentaire;
-    private Long clientId;
-    private String clientFullName;
 }

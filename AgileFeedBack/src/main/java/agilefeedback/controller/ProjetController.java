@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/admin/projets")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 @RequiredArgsConstructor
 public class ProjetController {
 
@@ -35,6 +36,6 @@ public class ProjetController {
     public ResponseEntity<ProjetDto> getProjetById(@PathVariable Long id) {
         return projetService.getProjetById(id)
                 .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build()); // <-- 404 si absent
+                .orElseGet(() -> ResponseEntity.notFound().build()); // 404 si absent
     }
 }

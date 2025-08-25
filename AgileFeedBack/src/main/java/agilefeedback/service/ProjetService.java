@@ -9,5 +9,6 @@ public interface ProjetService {
     ProjetDto createProjet(ProjetDto projetDto);
     void deleteProjet(Long id);
     List<ProjetDto> getAllProjets();
-    Optional<ProjetDto> getProjetById(Long id);   // <-- Optional
+    Optional<ProjetDto> getProjetById(Long id);
+    ProjetDto updateProjet(Long id, ProjetDto projetDto);
 }
